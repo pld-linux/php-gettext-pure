@@ -7,6 +7,7 @@ Group:		Development/Languages/PHP
 Source0:	http://download.savannah.nongnu.org/releases/php-gettext/php-gettext-%{version}.tar.gz
 # Source0-md5:	bc2e032ffe101c78c5be9d174ec593cb
 URL:		http://savannah.nongnu.org/projects/php-gettext/
+Requires:	php(mbstring)
 Requires:	php-common
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
