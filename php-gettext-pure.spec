@@ -1,4 +1,5 @@
 Summary:	Pure PHP Implementation if gettext
+Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
 Version:	1.0.7
 Release:	0.1
@@ -23,6 +24,18 @@ speed up the string lookup. While the cache is enabled by default, it
 can be switched off with the second parameter in the constructor (e.g.
 when using very large MO files that you don't want to keep in memory)
 
+%description -l pl.UTF-8
+Ten moduł udostępnia prosty zamiennik gettexta działający niezależnie
+od systemowych możliwości. Potrafi czytać pliki MO i wykorzystywać je
+do tłumaczenia łańcuchów znaków. Pliki te są przekazywane do
+gettext_reader jako obiekty Stream.
+
+Ta wersja ma możliwość zapamiętywania (cache'owania) wszystkich
+łańcuchów i tłumaczeń w celu przyspieszenia wyszukiwania łańcuchów.
+Pamięć podręczna jest domyślnie włączona, ale można ją wyłączyć drugim
+parametrem dla konstruktora (np. w przypadku używania bardzo dużych
+plików MO, których nie chcemy trzymać w pamięci).
+
 %prep
 %setup -q -n php-gettext-%{version}
 
@@ -41,5 +54,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/php/gettext.inc
 %{_datadir}/php/gettext.php
 %{_datadir}/php/streams.php
-
 %{_examplesdir}/%{name}-%{version}
