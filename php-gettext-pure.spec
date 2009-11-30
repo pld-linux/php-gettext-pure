@@ -1,13 +1,13 @@
 Summary:	Pure PHP Implementation if gettext
 Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
-Version:	1.0.7
+Version:	1.0.8
 Release:	1
 License:	GPL v2
 Group:		Development/Languages/PHP
-Source0:	http://download.savannah.nongnu.org/releases/php-gettext/php-gettext-%{version}.tar.gz
-# Source0-md5:	bc2e032ffe101c78c5be9d174ec593cb
-URL:		http://savannah.nongnu.org/projects/php-gettext/
+Source0:	http://launchpad.net/php-gettext/trunk/%{version}/+download/php-gettext-%{version}.tar.gz
+# Source0-md5:	b6c4473329560e095341a7e3d8f96d63
+URL:		https://launchpad.net/php-gettext
 Requires:	php(mbstring)
 Requires:	php-common
 BuildArch:	noarch
@@ -51,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%{_datadir}/php/gettext.inc
-%{_datadir}/php/gettext.php
-%{_datadir}/php/streams.php
+%{php_data_dir}/gettext.inc
+%{php_data_dir}/gettext.php
+%{php_data_dir}/streams.php
 %{_examplesdir}/%{name}-%{version}
