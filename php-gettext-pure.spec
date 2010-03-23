@@ -1,17 +1,39 @@
-Summary:	Pure PHP Implementation if gettext
+#
+# Conditional build:
+%bcond_with		tests	# do not perform "make test"
+
+%include	/usr/lib/rpm/macros.php
+%define		php_min_version 5.0.0
+Summary:	Pure PHP Implementation of gettext
 Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
-Version:	1.0.9
+Version:	1.0.10
 Release:	1
 License:	GPL v2
 Group:		Development/Languages/PHP
 Source0:	http://launchpad.net/php-gettext/trunk/%{version}/+download/php-gettext-%{version}.tar.gz
-# Source0-md5:	cdbe7222d0ec1bd05d691e7d10f230b2
+# Source0-md5:	dbae5ad3f7eab5cd4530768000f9b6be
 URL:		https://launchpad.net/php-gettext
-Requires:	php(mbstring)
-Requires:	php-common
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+BuildRequires:	rpmbuild(macros) >= 1.461
+%if %{with tests}
+%if %(locale -a | grep -q '^sr_RS$'; echo $?)
+# Not provided in PLD Linux by a package
+BuildRequires:	locale(sr_SR)
+%endif
+BuildRequires:	php-PHPUnit
+%endif
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-mbstring
+Requires:	php-pcre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# exclude optional php dependencies
+%define		_noautophp	php-gettext
+
+# put it together for rpmbuild
+%define		_noautoreq	%{?_noautophp} %{?_noautopear}
 
 %description
 Provides a simple gettext replacement that works independently from
@@ -38,6 +60,9 @@ plików MO, których nie chcemy trzymać w pamięci).
 
 %prep
 %setup -q -n php-gettext-%{version}
+
+%build
+%{?with_tests:%{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
