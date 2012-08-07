@@ -8,7 +8,7 @@ Summary:	Pure PHP Implementation of gettext
 Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
 Version:	1.0.10
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Development/Languages/PHP
 Source0:	http://launchpad.net/php-gettext/trunk/%{version}/+download/php-gettext-%{version}.tar.gz
@@ -23,9 +23,9 @@ BuildRequires:	locale(sr_SR)
 %endif
 BuildRequires:	php-PHPUnit
 %endif
+Requires:	php(mbstring)
+Requires:	php(pcre)
 Requires:	php-common >= 4:%{php_min_version}
-Requires:	php-mbstring
-Requires:	php-pcre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
