@@ -1,18 +1,18 @@
 #
 # Conditional build:
-%bcond_with		tests	# do not perform "make test"
+%bcond_without	tests	# do not perform "make test"
 
-%include	/usr/lib/rpm/macros.php
 %define		php_min_version 5.0.0
+%include	/usr/lib/rpm/macros.php
 Summary:	Pure PHP Implementation of gettext
 Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
-Version:	1.0.10
-Release:	3
+Version:	1.0.11
+Release:	1
 License:	GPL v2
 Group:		Development/Languages/PHP
 Source0:	http://launchpad.net/php-gettext/trunk/%{version}/+download/php-gettext-%{version}.tar.gz
-# Source0-md5:	dbae5ad3f7eab5cd4530768000f9b6be
+# Source0-md5:	c085ef92974358adb0faf9350f7973ec
 URL:		https://launchpad.net/php-gettext
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.461
@@ -60,6 +60,9 @@ plików MO, których nie chcemy trzymać w pamięci).
 
 %prep
 %setup -q -n php-gettext-%{version}
+
+# make it work for PHPUnit 3.7
+%{__sed} -i -e '/PHPUnit\/Framework.php/d' tests/*Test.php
 
 %build
 %{?with_tests:%{__make} check}
