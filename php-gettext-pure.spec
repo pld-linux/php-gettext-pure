@@ -3,7 +3,6 @@
 %bcond_without	tests	# do not perform "make test"
 
 %define		php_min_version 5.0.0
-%include	/usr/lib/rpm/macros.php
 Summary:	Pure PHP Implementation of gettext
 Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
