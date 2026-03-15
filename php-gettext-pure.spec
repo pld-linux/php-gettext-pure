@@ -7,7 +7,7 @@ Summary:	Pure PHP Implementation of gettext
 Summary(pl.UTF-8):	Implementacja gettexta w czystym PHP
 Name:		php-gettext-pure
 Version:	1.0.11
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Development/Languages/PHP
 Source0:	http://launchpad.net/php-gettext/trunk/%{version}/+download/php-gettext-%{version}.tar.gz
